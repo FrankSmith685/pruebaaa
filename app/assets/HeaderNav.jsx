@@ -12,6 +12,7 @@ import en from '../languaje/en';
 import Link from 'next/link';
 import { usePathname,useRouter } from 'next/navigation';
 import { AppContext } from '../context/AppContext';
+import Image from 'next/image';
 
 const HeaderNav = () => {
     const {tipoIdioma,setTipoIdioma} = useAppState();
@@ -174,7 +175,11 @@ const HeaderNav = () => {
                             ) : (
                                 <>
                                     <div className='flex flex-col items-center'>
-                                        <img src={imagenRef?.current.LogoPrincipalWhite} alt="Logo Principal" className='h-20' loading='lazy' />
+                                        <div className="relative w-full h-20">
+                                        <Image src={imagenRef?.current.LogoPrincipalWhite} alt="Logo Principal" layout="fill" objectFit="contain" />
+                                        </div>
+
+
                                         <div className="flex flex-col items-center">
                                             <h2 className={`font-roboto-thin font-medium text-xl transition-colors duration-300 ${isNavHovered ? 'text-gray-800' : 'text-white'}`}>
                                                 SANDRA ROGGERO M.
