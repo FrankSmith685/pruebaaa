@@ -16,6 +16,7 @@ export default function PreloadWrapper({ children }) {
   const { imagenRef } = useContext(AppContext);
   const {videos,setVideos} = useAppState();
     console.log("XD",imagenRef);
+    console.log("QQ","");
   useEffect(() => {
     const checkResourcesLoaded = () => {
       return (
