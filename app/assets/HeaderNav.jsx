@@ -179,7 +179,7 @@ const HeaderNav = () => {
                                 <>
                                     <div className='flex flex-col items-center'>
                                         <div className="relative w-full h-20">
-                                        <Image src="/imagenes/ww.png" alt="ggg" layout="fill" objectFit="contain" />
+                                        <Image src={imagenRef?.current.LogoPrincipalWhite} alt="Logo Principal" layout="fill" objectFit="contain" />
                                         </div>
 
 
