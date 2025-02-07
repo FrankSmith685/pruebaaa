@@ -1,8 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 
 export default function InitImages() {
   const { imagenRef } = useContext(AppContext);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (!imagenRef.current) return;
@@ -37,12 +38,20 @@ export default function InitImages() {
       }
     };
 
-    Object.entries(imagePaths).forEach(([key, path]) => {
-      if (!imagenRef.current[key]) {
-        loadImageAsBlob(key, path);
-      }
-    });
+    const loadImages = async () => {
+      await Promise.all(
+        Object.entries(imagePaths).map(([key, path]) =>
+          !imagenRef.current[key] ? loadImageAsBlob(key, path) : null
+        )
+      );
+      setLoaded(true);
+    };
+
+    loadImages();
   }, []);
+
+  if (!loaded) return null; // Evita mostrar imágenes antes de que se carguen
 
   return null;
 }
+
