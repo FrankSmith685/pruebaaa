@@ -148,6 +148,8 @@ const HeaderNav = () => {
 
     const { imagenRef } = useContext(AppContext);
 
+    
+    console.log(imagenRef?.current)
     return (
         <nav className="p-0 w-full z-50 fixed top-0">
             <div 
@@ -161,7 +163,7 @@ const HeaderNav = () => {
                             {isNavHovered ? (
                                 <>
                                     <div className='flex flex-col items-center'>
-                                        <img src={imagenRef?.current.LogoPrincipalBlack} alt="Logo Principal" className='h-20' loading='lazy'/>
+                                        <img src={imagenRef?.current?.["LogoPrincipalBlack.png"]} alt="Logo Principal" className='h-20' loading='lazy'/>
                                         <div className="flex flex-col items-center w-auto">
                                             <h2 className={`font-roboto-thin w-auto font-medium text-xl transition-colors duration-300 ${isNavHovered ? 'text-gray-800' : 'text-white'}`}>
                                                 SANDRA ROGGERO M.
@@ -176,7 +178,7 @@ const HeaderNav = () => {
                                 <>
                                     <div className='flex flex-col items-center'>
                                         <div className="relative w-full h-20">
-                                        <Image src={imagenRef?.current.LogoPrincipalWhite} alt="Logo Principal" layout="fill" objectFit="contain" />
+                                        <Image src={imagenRef?.current?.["LogoPrincipalWhite.png"]} alt="Logo Principal" layout="fill" objectFit="contain" />
                                         </div>
 
 
