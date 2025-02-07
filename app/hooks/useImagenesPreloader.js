@@ -29,7 +29,9 @@ export default function InitImages() {
 
     const loadImageAsBlob = async (key, path) => {
       try {
+        console.log(path);
         const response = await fetch(path);
+        console.log(response);
         if (!response.ok) throw new Error(`Error al cargar ${path}`);
         const blob = await response.blob();
         imagenRef.current[key] = URL.createObjectURL(blob);
