@@ -2,5 +2,6 @@ export const types = {
     setImagenesPreloader:"setImagenesPreloader",
     setVideosPreloader:"setVideosPreloader",
     setActiveCarga:"setActiveCarga",
-    setTipoIdioma:"setTipoIdioma"
+    setTipoIdioma:"setTipoIdioma",
+    setVideos:"setVideos"
 }

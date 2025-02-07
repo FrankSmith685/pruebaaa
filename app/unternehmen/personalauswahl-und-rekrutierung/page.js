@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
 import MeineDienstleistungen from "@/app/assets/MeineDienstleistungen";
+import { AppContext } from "@/app/context/AppContext";
 
 const PersonalauswahlUndRekrutierung = () => {
   const {tipoIdioma } = useAppState();
@@ -41,13 +42,16 @@ const PersonalauswahlUndRekrutierung = () => {
         }
     },[tipoIdioma]);
 
+    const { imagenRef } = useContext(AppContext)
 
+    console.log(imagenRef?.current.Personalauswahl_und_Rekrutierung)
 
     return (
         <>
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img 
-                    src={optimizedImageURL("v1719433441/w0hfv4paxus96kbjo2pi.jpg")}
+                // src={imagenRef?.current.LogoPrincipalWhite}
+                    src={imagenRef?.current.Personalauswahl_und_Rekrutierung}
                     alt="NOT FOUND" 
                     className="absolute top-0 left-0 w-full h-full object-cover z-0"
                     loading="lazy"

@@ -1,11 +1,12 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {FaAngleRight,FaAngleLeft} from 'react-icons/fa'
 import { useAppState } from "../hooks/useAppState";
 import de from "../languaje/de";
 import es from "../languaje/es";
 import en from "../languaje/en";
 import Link from "next/link";
+import { AppContext } from "../context/AppContext";
 // import logoPrincipal from "../assets/imagenes/logoPrincipal.png";
 
 const Footer = () => {
@@ -23,6 +24,8 @@ const Footer = () => {
 
     const { tipoIdioma } = useAppState();
   const [homeData,setHomeData] = useState(de.footer);
+
+  const { imagenRef } = useContext(AppContext)
 
     useEffect(()=>{
         if(tipoIdioma==='de'){
@@ -42,7 +45,7 @@ const Footer = () => {
                 <div className="text-center mb-8">
                     <div className="flex items-center justify-center ">
                         <Link href="/" onClick={handleLinkClick} className='flex flex-col items-center'>
-                            <img src={optimizedImageURL('v1719690680/w24ybh8okav1nil30ylm.png')} alt="Logo Principal" className='h-20' loading='lazy'/>
+                            <img src={imagenRef?.current.LogoPrincipalWhite} alt="Logo Principal" className='h-20' loading='lazy'/>
                             <div className="flex flex-col items-center">
                                 <h2 className="font-roboto-thin font-medium lg:text-xl md:text-lg transition-colors duration-300 text-white">
                                     SANDRA ROGGERO M.

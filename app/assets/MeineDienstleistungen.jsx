@@ -1,9 +1,10 @@
 'use client'
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import de from "../languaje/de";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useAppState } from "../hooks/useAppState";
 import es from "../languaje/es";
+import { AppContext } from "../context/AppContext";
 
 const MeineDienstleistungen = () => {
     const {tipoIdioma} = useAppState();
@@ -48,7 +49,7 @@ const [homeData,setHomeData] = useState(de.home);
         return 'hidden';
       };
 
-   
+      const { imagenRef } = useContext(AppContext)
 
 
     return(
@@ -59,12 +60,13 @@ const [homeData,setHomeData] = useState(de.home);
                 <div className="flex justify-center items-center  w-full h-96 p-20">
                     {services.map((service, index) => (
                     <div key={index} className={`absolute w-full md:w-1/2  transition-transform duration-500 ease-in-out ${getCardPosition(index, currentIndex, services.length)}`}>
-                        <div className="w-full h-full ">
-                        <img src={service.image} alt={service.title} className="w-full h-96 object-cover"/>
+                        <div className="w-full h-[400px] ">
+                        <img src={index===0 ? imagenRef?.current.Studium : index===1 ? imagenRef?.current.Ausbildung : index===2 ? imagenRef?.current.Praktikum : index===3 ? imagenRef?.current.Arbeit : index===4 ? imagenRef?.current.Steuern : index===5 ? imagenRef?.current.Wohen :index===6 ?  imagenRef?.current.Transportmittel :index===7 ? imagenRef?.current.Visum :index===8 ? imagenRef?.current.Sprachkompetenzen: null } alt={service.title} className="w-full h-full object-cover" loading="lazy" />
+
                         </div>
                         
                         <div className="absolute inset-0 w-full flex items-end justify-center">
-                            <div className="w-full  bg-bg_favorite_4 text-center p-4">
+                            <div className="w-full  bg-bg_favorite_4 text-center p-4 z-50">
                                 <h3 className="text-base font-bold text-white">{service.title}</h3>
                             </div>
                         </div>
