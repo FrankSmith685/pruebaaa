@@ -8,44 +8,42 @@ export default function InitImages() {
   useEffect(() => {
     if (!imagenRef.current) return;
 
-    const imagePaths = {
-      LogoPrincipalWhite: "/imagenes/LogoPrincipalWhite.png",
-      LogoPrincipalBlack: "/imagenes/LogoPrincipalBlack.png",
-      Foto_Principal: "/imagenes/Foto_Principal.jpg",
-      Innovation: "/imagenes/Innovation.png",
-      Recruiting: "/imagenes/Recruiting.png",
-      Vision: "/imagenes/Vision.png",
-      Contratacion: "/imagenes/Contratacion.png",
-      Studium: "/imagenes/studium.jpg",
-      Ausbildung: "/imagenes/Ausbildung.jpg",
-      Praktikum: "/imagenes/Praktikum.jpg",
-      Arbeit: "/imagenes/Arbeit.jpg",
-      Steuern: "/imagenes/Steuern.jpg",
-      Wohen: "/imagenes/Wohen.jpg",
-      Visum: "/imagenes/visum.jpg",
-      Sprachkompetenzen: "/imagenes/Sprachkompetenzen.jpg",
-      Personalauswahl_und_Rekrutierung: "/imagenes/Personalauswahl_und_Rekrutierung.jpg",
-    };
+    const imagePaths = [
+      "LogoPrincipalWhite.png",
+      "LogoPrincipalBlack.png",
+      "Foto_Principal.jpg",
+      "Innovation.png",
+      "Recruiting.png",
+      "Vision.png",
+      "Contratacion.png",
+      "studium.jpg",
+      "Ausbildung.jpg",
+      "Praktikum.jpg",
+      "Arbeit.jpg",
+      "Steuern.jpg",
+      "Wohen.jpg",
+      "visum.jpg",
+      "Sprachkompetenzen.jpg",
+      "Personalauswahl_und_Rekrutierung.jpg",
+    ];
 
-    const loadImageAsBlob = async (key, path) => {
+    const loadImageAsBlob = async (imageName) => {
+      const path = `/imagenes/${imageName}`;
       try {
-        console.log(path);
+        console.log(`Intentando cargar: ${path}`);
         const response = await fetch(path);
-        console.log(response);
         if (!response.ok) throw new Error(`Error al cargar ${path}`);
+
         const blob = await response.blob();
-        imagenRef.current[key] = URL.createObjectURL(blob);
+        console.log(blob)
+        imagenRef.current[imageName] = URL.createObjectURL(blob);
       } catch (error) {
-        console.error(error);
+        console.warn(`No se pudo cargar: ${path}`, error.message);
       }
     };
 
     const loadImages = async () => {
-      await Promise.all(
-        Object.entries(imagePaths).map(([key, path]) =>
-          !imagenRef.current[key] ? loadImageAsBlob(key, path) : null
-        )
-      );
+      await Promise.all(imagePaths.map(loadImageAsBlob));
       setLoaded(true);
     };
 
@@ -56,4 +54,3 @@ export default function InitImages() {
 
   return null;
 }
-
