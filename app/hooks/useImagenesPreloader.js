@@ -9,9 +9,9 @@ export default function InitImages() {
     if (!imagenRef.current) return;
 
     const imagePaths = {
-      LogoPrincipalWhite: "/imagenes/LogoPrincipalWhite1.jpeg",
+      // LogoPrincipalWhite: "/imagenes/LogoPrincipalWhite1.jpeg",
       LogoPrincipalBlack: "/imagenes/LogoPrincipalBlack.png",
-      Foto_Principal: "/imagenes/Foto_Principal.jpg",
+      // Foto_Principal: "/imagenes/Foto_Principal.jpg",
       Innovation: "/imagenes/Innovation.png",
       Recruiting: "/imagenes/Recruiting.png",
       Vision: "/imagenes/Vision.png",

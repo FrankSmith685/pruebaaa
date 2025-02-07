@@ -14,6 +14,8 @@ import { usePathname,useRouter } from 'next/navigation';
 import { AppContext } from '../context/AppContext';
 import Image from 'next/image';
 
+import logoPrincipalWhite from "../../public/imagenes/LogoPrincipalWhite.png"
+
 const HeaderNav = () => {
     const {tipoIdioma,setTipoIdioma} = useAppState();
     const [isNavHovered, setIsNavHovered] = useState(false);
@@ -149,7 +151,6 @@ const HeaderNav = () => {
     const { imagenRef } = useContext(AppContext);
 
     
-    console.log(imagenRef?.current)
     return (
         <nav className="p-0 w-full z-50 fixed top-0">
             <div 
@@ -178,7 +179,7 @@ const HeaderNav = () => {
                                 <>
                                     <div className='flex flex-col items-center'>
                                         <div className="relative w-full h-20">
-                                        <Image src="/imagenes/LogoPrincipalBlack.jpg" alt="Logo xd" layout="fill" objectFit="contain" />
+                                        <Image src={logoPrincipalWhite} alt="Xa" layout="fill" objectFit="contain" />
                                         </div>
 
 
