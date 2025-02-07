@@ -19,22 +19,22 @@ export default function PreloadWrapper({ children }) {
   useEffect(() => {
     const checkResourcesLoaded = () => {
       return (
-        imagenRef.current?.LogoPrincipalWhite &&
-        imagenRef.current?.LogoPrincipalBlack &&
-        imagenRef.current?.Foto_Principal &&
-        imagenRef.current?.Innovation &&
-        imagenRef.current?.Recruiting &&
-        imagenRef.current?.Vision &&
-        imagenRef.current?.Contratacion &&
-        imagenRef.current?.Studium &&
-        imagenRef.current?.Ausbildung &&
-        imagenRef.current?.Praktikum &&
-        imagenRef.current?.Arbeit &&
-        imagenRef.current?.Steuern &&
-        imagenRef.current?.Wohen &&
-        imagenRef.current?.Visum &&
-        imagenRef.current?.Sprachkompetenzen &&
-        imagenRef.current?.Personalauswahl_und_Rekrutierung &&
+        // imagenRef.current?.LogoPrincipalWhite &&
+        // imagenRef.current?.LogoPrincipalBlack &&
+        // imagenRef.current?.Foto_Principal &&
+        // imagenRef.current?.Innovation &&
+        // imagenRef.current?.Recruiting &&
+        // imagenRef.current?.Vision &&
+        // imagenRef.current?.Contratacion &&
+        // imagenRef.current?.Studium &&
+        // imagenRef.current?.Ausbildung &&
+        // imagenRef.current?.Praktikum &&
+        // imagenRef.current?.Arbeit &&
+        // imagenRef.current?.Steuern &&
+        // imagenRef.current?.Wohen &&
+        // imagenRef.current?.Visum &&
+        // imagenRef.current?.Sprachkompetenzen &&
+        // imagenRef.current?.Personalauswahl_und_Rekrutierung &&
         videos.banner?.readyState >= 3
       );
     };
