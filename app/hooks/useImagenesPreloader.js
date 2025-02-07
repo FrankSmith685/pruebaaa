@@ -1,16 +1,4 @@
 import { useContext, useEffect } from "react";
-// import LogoPrincipalWhite from "/imagenes/LogoPrincipalWhite.png";
-// import LogoPrincipalBlack from "/imagenes/LogoPrincipalBlack.png";
-// import Foto_Principal from "/imagenes/Foto_Principal.jpg";
-// import Innovation from "@/imagenes/Innovation.png";
-// import Recruiting from "@/imagenes/Recruiting.png";
-// import Vision from "@/imagenes/Vision.png";
-// import Contratacion from "@/imagenes/Contratacion.png";
-
-
-// import LogoPrincipal_Black from "@/public/images/home/LogoPrincipal_1.png";
-// import FotoPerfil from "@/public/images/home/FotoPerfil.jpg";
-
 import { AppContext } from "../context/AppContext";
 
 export default function InitImages() {
@@ -19,63 +7,42 @@ export default function InitImages() {
   useEffect(() => {
     if (!imagenRef.current) return;
 
-    if (
-      !imagenRef.current.LogoPrincipalWhite &&
-      !imagenRef.current.LogoPrincipalBlack &&
-      !imagenRef.current.Foto_Principal &&
-      !imagenRef.current.Innovation &&
-      !imagenRef.current.Recruiting &&
-      !imagenRef.current.Vision &&
-      !imagenRef.current.Contratacion &&
-      !imagenRef.current.Studium &&
-      !imagenRef.current.Ausbildung &&
-      !imagenRef.current.Praktikum &&
-      !imagenRef.current.Arbeit &&
-      !imagenRef.current.Steuern &&
-      !imagenRef.current.Wohen &&
-      !imagenRef.current.Visum &&
-      !imagenRef.current.Sprachkompetenzen &&
-      !imagenRef.current.Personalauswahl_und_Rekrutierung 
-      
-    ) {
-      imagenRef.current.LogoPrincipalWhite = "/imagenes/LogoPrincipalWhite.png";
-      imagenRef.current.LogoPrincipalBlack = "/imagenes/LogoPrincipalBlack.png";
-      imagenRef.current.Foto_Principal = "/imagenes/Foto_Principal.jpg";
-      imagenRef.current.Innovation = "imagenes/Innovation.png";
-      imagenRef.current.Recruiting = "imagenes/Recruiting.png";
-      imagenRef.current.Vision = "imagenes/Vision.png";
-      imagenRef.current.Contratacion = "imagenes/Contratacion.png";
+    const imagePaths = {
+      LogoPrincipalWhite: "/imagenes/LogoPrincipalWhite.png",
+      LogoPrincipalBlack: "/imagenes/LogoPrincipalBlack.png",
+      Foto_Principal: "/imagenes/Foto_Principal.jpg",
+      Innovation: "/imagenes/Innovation.png",
+      Recruiting: "/imagenes/Recruiting.png",
+      Vision: "/imagenes/Vision.png",
+      Contratacion: "/imagenes/Contratacion.png",
+      Studium: "/imagenes/studium.jpg",
+      Ausbildung: "/imagenes/Ausbildung.jpg",
+      Praktikum: "/imagenes/Praktikum.jpg",
+      Arbeit: "/imagenes/Arbeit.jpg",
+      Steuern: "/imagenes/Steuern.jpg",
+      Wohen: "/imagenes/Wohen.jpg",
+      Visum: "/imagenes/visum.jpg",
+      Sprachkompetenzen: "/imagenes/Sprachkompetenzen.jpg",
+      Personalauswahl_und_Rekrutierung: "/imagenes/Personalauswahl_und_Rekrutierung.jpg",
+    };
 
-      imagenRef.current.Studium = "imagenes/studium.jpg";
-      imagenRef.current.Ausbildung = "imagenes/Ausbildung.jpg";
-      imagenRef.current.Praktikum = "imagenes/Praktikum.jpg";
-      imagenRef.current.Arbeit = "imagenes/Arbeit.jpg";
-      imagenRef.current.Steuern = "imagenes/Steuern.jpg";
-      imagenRef.current.Wohen = "imagenes/Wohen.jpg";
-      imagenRef.current.Transportmittel = "";
-      imagenRef.current.Visum = "imagenes/visum.jpg";
-      imagenRef.current.Sprachkompetenzen = "imagenes/Sprachkompetenzen.jpg";
+    const loadImageAsBlob = async (key, path) => {
+      try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error(`Error al cargar ${path}`);
+        const blob = await response.blob();
+        imagenRef.current[key] = URL.createObjectURL(blob);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-      imagenRef.current.Personalauswahl_und_Rekrutierung = "imagenes/Personalauswahl_und_Rekrutierung.jpg";
-      // imagenRef.current.Sprachkompetenzen = "imagenes/Sprachkompetenzen.jpg";
-      // imagenRef.current.Sprachkompetenzen = "imagenes/Sprachkompetenzen.jpg";
-      // imagenRef.current.Sprachkompetenzen = "imagenes/Sprachkompetenzen.jpg";
-      // imagenRef.current.Sprachkompetenzen = "imagenes/Sprachkompetenzen.jpg";
-
-      
-      
-
-
-      
-      // imagenRef.current.FotoPerfil = FotoPerfil;
-      // imagenRef.current.Innovation = Innovation;
-      // imagenRef.current.Recruiting = Recruiting;
-      // imagenRef.current.Vision = Vision;
-      // imagenRef.current.Contratacion = Contratacion;
-      
-    }
+    Object.entries(imagePaths).forEach(([key, path]) => {
+      if (!imagenRef.current[key]) {
+        loadImageAsBlob(key, path);
+      }
+    });
   }, []);
 
   return null;
 }
-
