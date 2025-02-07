@@ -14,7 +14,7 @@ import { usePathname,useRouter } from 'next/navigation';
 import { AppContext } from '../context/AppContext';
 import Image from 'next/image';
 
-import logoPrincipalWhite from "../../public/imagenes/LogoPrincipalWhite.png"
+// import logoPrincipalWhite from "../../public/imagenes/LogoPrincipalWhite.png"
 
 const HeaderNav = () => {
     const {tipoIdioma,setTipoIdioma} = useAppState();
@@ -179,7 +179,7 @@ const HeaderNav = () => {
                                 <>
                                     <div className='flex flex-col items-center'>
                                         <div className="relative w-full h-20">
-                                        <Image src={logoPrincipalWhite} alt="Xa" layout="fill" objectFit="contain" />
+                                        <Image src="/imagenes/LogoPrincipalWhite.png" alt="Xad" layout="fill" objectFit="contain" />
                                         </div>
 
 
