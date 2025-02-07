@@ -10,6 +10,7 @@ export default function InitImages() {
 
     const imagePaths = [
       "LogoPrincipalWhite.png",
+      "LogoWhite.JPG",
       "LogoPrincipalBlack.png",
       "Foto_Principal.jpg",
       "Innovation.png",
