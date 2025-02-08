@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 import {
@@ -15,6 +15,7 @@ import es from '../languaje/es';
 import en from '../languaje/en';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { AppContext } from '../context/AppContext';
 
 const Kontakt = () => {
   const navigate = useRouter();
@@ -158,15 +159,40 @@ useEffect(()=>{
     }
 },[tipoIdioma]);
 
+const { imagenRef } = useContext(AppContext)
+
+const [imageSrc, setImageSrc] = useState("");
+
+useEffect(() => {
+  const checkImage = () => {
+    if (imagenRef?.current?.Inklusionsaudit) {
+      setImageSrc(imagenRef.current.Inklusionsaudit);
+    } else {
+      console.log("Imagen aún no está disponible.");
+    }
+  };
+  const interval = setInterval(checkImage, 500);
+
+  return () => clearInterval(interval);
+}, [imagenRef]);
+
 
   return (
     <>
       <div className="w-full h-screen bg-bg_favorite_1 relative">
-        <img 
-        src={optimizedImageURL("v1720048164/r5phhfvrwr57yofnqlsu.jpg")} 
-        alt="NOT FOUND" 
-        className="absolute top-0 left-0 w-full h-full object-cover z-0" 
-        />
+        {!imageSrc && (
+            <div className="flex items-center justify-center w-full h-full">
+            <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+        )}
+        {imageSrc && (
+            <img
+            src={imageSrc}
+            alt="Imagen cargada"
+            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+            loading="lazy"
+            />
+        )}
         <div className="bg-bg_favorite_1 flex flex-col justify-center items-center md:items-end h-full z-20 relative space-y-4 p-4 pt-32 sm:pt-48 md:pt-64 sm:p-6 md:p-8">
           <div className="w-full md:w-1/2 h-auto">
               <h2 className="text-white font-bold text-2xl sm:text-4xl  md:text-5xl font-bell text-center md:text-end px-2">
