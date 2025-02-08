@@ -109,9 +109,7 @@ export default function PreloadWrapper({ children }) {
     const checkResourcesLoaded = () => {
       const logoWhiteLoaded = imagenRef.current?.LogoPrincipalWhite;
       const logoBlackLoaded = imagenRef.current?.LogoPrincipalBlack;
-      const videoReady = videos.banner?.readyState >= 1;
-    
-      return logoWhiteLoaded && logoBlackLoaded && videoReady;
+      return logoWhiteLoaded && logoBlackLoaded ;
     };
     
 
@@ -127,7 +125,7 @@ export default function PreloadWrapper({ children }) {
 
       return () => clearInterval(interval);
     }
-  }, [imagenRef, videos]);
+  }, []);
 
   if (loading) {
     return (
