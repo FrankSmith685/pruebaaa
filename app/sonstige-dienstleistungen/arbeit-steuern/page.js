@@ -7,16 +7,26 @@ import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
 import { AppContext } from "@/app/context/AppContext";
 
-
-// const images = ["v1720047637/okxctjjmmdegr4ptljhn.jpg", "v1720047700/pqjjlckzyuvgt32bxkhk.jpg"];
-
 const ArbeitSteuern = () => {
     const navigate = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const { imagenRef } = useContext(AppContext)
+    // const { imagenRef } = useContext(AppContext)
 
-    const images = [imagenRef.Arbeit, imagenRef.Steuern];
+    
+    const { imagenRef } = useContext(AppContext);
+    const images = [imagenRef.current.Arbeit, imagenRef.current.Steuern];
+    console.log(imagenRef);
+    // const [images, setImages] = useState([]);
+
+    // useEffect(() => {
+    //     if (imagenRef?.Arbeit && imagenRef?.Steuern) {
+    //         setImages([imagenRef.Arbeit, imagenRef.Steuern]);
+    //     }
+    // }, [imagenRef]); // Se actualiza cuando `imagenRef` cambia
+
+    // if (images.length === 0) return null; // Evita errores si las imágenes aún no se cargan
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -40,11 +50,6 @@ const ArbeitSteuern = () => {
         setCurrentImageIndex(index);
     };
 
-    const optimizedImageURL = (url) => {
-        const cloudinaryBaseURL = 'https://res.cloudinary.com/dievolijo/image/upload/';
-        return `${cloudinaryBaseURL}c_scale,w_2000/${url}`;
-    };
-
     const [data,setData] = useState(de.MeineDienstleistungen);
     const {tipoIdioma} = useAppState();
 
@@ -58,11 +63,13 @@ const ArbeitSteuern = () => {
         }
     },[tipoIdioma]);
 
+    console.log(images[currentImageIndex]);
+
     return (
         <>
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img
-                    src={optimizedImageURL(images[currentImageIndex])}
+                    src={images[currentImageIndex]}
                     alt="NOT FOUND"
                     className="absolute top-0 left-0 w-full h-full object-cover z-0"
                 />

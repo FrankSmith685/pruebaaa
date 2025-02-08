@@ -14,7 +14,7 @@ const VisumSprache = () => {
 
     const { imagenRef } = useContext(AppContext)
 
-    const images = [imagenRef.Visum, imagenRef.Sprachkompetenzen];
+    const images = [imagenRef.current.Visum, imagenRef.current.Sprachkompetenzen];
 
     useEffect(() => {
         window.scrollTo(0, 0);

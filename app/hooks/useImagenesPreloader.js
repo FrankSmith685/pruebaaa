@@ -103,18 +103,6 @@ export default function InitImages() {
       Wer_Wir_Sind: "/imagenes/25.png",
       Unsere_Philosophie: "/imagenes/26.jpg",
     };
-
-    // const loadImageAsBlob = async (key, path) => {
-    //   try {
-    //     const response = await fetch(path);
-    //     if (!response.ok) throw new Error(`Error al cargar ${path}`);
-    //     const blob = await response.blob();
-    //     imagenRef.current[key] = URL.createObjectURL(blob);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
-
     const loadImages = async () => {
       const promises = Object.entries(imagePaths).map(async ([key, path]) => {
         if (!imagenRef.current[key]) {  // Evita recargas innecesarias

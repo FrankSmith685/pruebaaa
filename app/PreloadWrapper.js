@@ -45,11 +45,14 @@ export default function PreloadWrapper({ children }) {
   };
   useEffect(() => {
     const checkResourcesLoaded = () => {
-      const allImagesLoaded = Object.keys(imagenRef.current || {}).length === Object.keys(imagePaths).length;
+      const allImagesLoaded =
+        Object.keys(imagenRef.current || {}).length === Object.keys(imagePaths).length;
+        console.log("",videos.banner?.readyState)
       return allImagesLoaded && videos.banner?.readyState >= 3;
     };
-    
 
+    console.log(checkResourcesLoaded());
+  
     if (checkResourcesLoaded()) {
       setLoading(false);
     } else {
@@ -58,11 +61,14 @@ export default function PreloadWrapper({ children }) {
           setLoading(false);
           clearInterval(interval);
         }
-      }, 100); 
-
+      }, 100);
+  
       return () => clearInterval(interval);
     }
-  }, [imagenRef,videos]);
+  }, [imagenRef,videos]); // Se ejecuta solo una vez en el montaje
+  
+
+  console.log(loading);
 
   if (loading) {
     return (
@@ -76,8 +82,8 @@ export default function PreloadWrapper({ children }) {
 
   return (
     <>
-        <InitImages />
-        <InitVideos />
+        {/* <InitImages />
+        <InitVideos /> */}
         <HeaderNav />
         {children}
         <Footer/>

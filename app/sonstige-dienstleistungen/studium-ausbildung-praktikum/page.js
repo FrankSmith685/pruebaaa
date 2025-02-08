@@ -13,7 +13,7 @@ import { AppContext } from "@/app/context/AppContext";
 const StudiumAusbildungPraktikum = () => {
     const { imagenRef } = useContext(AppContext)
 
-    const images = [imagenRef.Studium, imagenRef.Ausbildung, imagenRef.Praktikum];
+    const images = [imagenRef.current.Studium, imagenRef.current.Ausbildung, imagenRef.current.Praktikum];
 
     const navigate = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);

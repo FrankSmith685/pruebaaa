@@ -15,7 +15,7 @@ const WohnenTransport = () => {
 
     const { imagenRef } = useContext(AppContext)
 
-    const images = [imagenRef.Wohen, imagenRef.Transportmittel];
+    const images = [imagenRef.current.Wohen, imagenRef.current.Transportmittel];
 
     useEffect(() => {
         window.scrollTo(0, 0);
