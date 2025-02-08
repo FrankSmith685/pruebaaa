@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import MeineDienstleistungen from "@/app/assets/MeineDienstleistungen";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 const Personalbewertungen=()=>{
   const {tipoIdioma } = useAppState();
@@ -41,12 +42,14 @@ const Personalbewertungen=()=>{
         }
     },[tipoIdioma]);
 
+    const { imagenRef } = useContext(AppContext)
+
     return(
         <>
 
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img 
-                    src={optimizedImageURL("v1719433441/cmbypveirnacdqmlimvq.jpg")}
+                    src={imagenRef?.current.Personalbewertungen}
                     alt="NOT FOUND" 
                     className="absolute top-0 left-0 w-full h-full object-cover z-0"
                     loading="lazy"

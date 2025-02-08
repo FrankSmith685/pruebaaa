@@ -23,8 +23,19 @@ export default function InitImages() {
       Steuern: "/imagenes/Steuern.jpg",
       Wohen: "/imagenes/Wohen.jpg",
       Visum: "/imagenes/visum.jpg",
+      Transportmittel: "/imagenes/Wohen.jpg",
       Sprachkompetenzen: "/imagenes/Sprachkompetenzen.jpg",
       Personalauswahl_und_Rekrutierung: "/imagenes/Personalauswahl_und_Rekrutierung.jpg",
+      Personalbewertungen: "/imagenes/Personalbewertungen.jpg",
+      International: "/imagenes/International.jpg",
+      Funktionen: "/imagenes/Funktionen.jpg",
+      Fachspezifische_Suche: "/imagenes/Fachspezifische_Suche.jpg",
+      Inklusionsaudit: "/imagenes/Inklusionsaudit.jpg",
+
+      Registrieren_Sie_Ihren_Lebenslauf: "/imagenes/RSI.jpg",
+      Internationales_Karrieremanagement: "/imagenes/Internationales_Karrieremanagement.jpg",
+      Wer_Wir_Sind: "/imagenes/Wer_Wir_Sind.png",
+      Unsere_Philosophie: "/imagenes/Unsere_Philosophie.jpg",
     };
 
     const loadImageAsBlob = async (key, path) => {

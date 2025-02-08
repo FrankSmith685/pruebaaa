@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Container, Typography, Box, IconButton, Avatar } from '@mui/material'; 
 import { CloudUpload, Delete } from '@mui/icons-material';
 import { useDropzone } from 'react-dropzone';
@@ -8,6 +8,7 @@ import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 const RegistrierenSieIhrenLebenslauf = () => {
   const { tipoIdioma } = useAppState();
@@ -107,11 +108,14 @@ const RegistrierenSieIhrenLebenslauf = () => {
     }
   }, [tipoIdioma]);
 
+
+  const { imagenRef } = useContext(AppContext)
+
   return (
     <>
       <div className="w-full h-screen bg-bg_favorite_1 relative">
         <img
-          src={optimizedImageURL("v1720047881/tai02jjyhgvlyd7mtu8q.jpg")}
+          src={imagenRef?.current.Registrieren_Sie_Ihren_Lebenslauf}
           alt="Registrieren Sie Ihren Lebenslauf"
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
           loading="lazy"

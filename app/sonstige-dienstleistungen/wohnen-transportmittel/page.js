@@ -1,16 +1,21 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 const images = ["v1720616614/cebiafyysmleabgeofvi.jpg","v1720622228/omcgfbrslqda69acfxr0.jpg"];
 
 const WohnenTransport = () => {
     const navigate = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const { imagenRef } = useContext(AppContext)
+
+    const images = [imagenRef.Wohen, imagenRef.Transportmittel];
 
     useEffect(() => {
         window.scrollTo(0, 0);

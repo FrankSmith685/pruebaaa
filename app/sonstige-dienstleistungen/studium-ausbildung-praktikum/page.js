@@ -1,16 +1,19 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 
 
 
 const StudiumAusbildungPraktikum = () => {
-    const images = ["v1719434278/ocddglzj4wpc5lbidcve.jpg", "v1719434278/rru0wddozzlje8tv7wo7.jpg", "v1720047308/qhowjwv3jbywvh3fgqeb.jpg"];
+    const { imagenRef } = useContext(AppContext)
+
+    const images = [imagenRef.Studium, imagenRef.Ausbildung, imagenRef.Praktikum];
 
     const navigate = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);

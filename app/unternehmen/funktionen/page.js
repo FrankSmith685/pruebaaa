@@ -1,12 +1,13 @@
 
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
 import MeineDienstleistungen from "@/app/assets/MeineDienstleistungen";
+import { AppContext } from "@/app/context/AppContext";
 
 const Funktionen=()=>{
     const navigate = useRouter();
@@ -42,11 +43,13 @@ const Funktionen=()=>{
         }
     },[tipoIdioma]);
 
+    const { imagenRef } = useContext(AppContext)
+
     return(
         <>
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img 
-                src={optimizedImageURL("v1719433285/pk1xb6epqgswmkk8qrdl.jpg")}
+                src={imagenRef?.current.Funktionen}
                 alt="NOT FOUND" 
                 className="absolute top-0 left-0 w-full h-full object-cover z-0" 
                 loading="lazy"

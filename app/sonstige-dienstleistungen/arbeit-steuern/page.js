@@ -1,17 +1,22 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import { useAppState } from "../../hooks/useAppState";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 
-const images = ["v1720047637/okxctjjmmdegr4ptljhn.jpg", "v1720047700/pqjjlckzyuvgt32bxkhk.jpg"];
+// const images = ["v1720047637/okxctjjmmdegr4ptljhn.jpg", "v1720047700/pqjjlckzyuvgt32bxkhk.jpg"];
 
 const ArbeitSteuern = () => {
     const navigate = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const { imagenRef } = useContext(AppContext)
+
+    const images = [imagenRef.Arbeit, imagenRef.Steuern];
 
     useEffect(() => {
         window.scrollTo(0, 0);

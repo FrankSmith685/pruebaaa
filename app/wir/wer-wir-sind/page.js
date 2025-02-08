@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
 import MeineDienstleistungen from "@/app/assets/MeineDienstleistungen";
+import { AppContext } from "@/app/context/AppContext";
 
 const WerWirSind=()=>{
     const navigate = useRouter();
@@ -56,13 +57,15 @@ const WerWirSind=()=>{
         setCurrentImageIndex(index);
     };
 
+    const { imagenRef } = useContext(AppContext)
+
     return(
         <>
             
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <div className="w-full h-full flex items-center justify-center absolute top-0 left-0">
                     <img 
-                    src={optimizedImageURL(images[0])} 
+                    src={imagenRef?.current.Wer_Wir_Sind} 
                     alt="Wer Wir Sind" 
                     className="h-full z-0 sm:w-auto object-cover w-full" 
                     />

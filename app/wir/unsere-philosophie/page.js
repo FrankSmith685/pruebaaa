@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import de from "../../languaje/de";
 import { useAppState } from "../../hooks/useAppState";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import MeineDienstleistungen from "@/app/assets/MeineDienstleistungen";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 const UnserePhilosophie=()=>{
     const navigate = useRouter();
@@ -39,13 +40,15 @@ const UnserePhilosophie=()=>{
         }
     },[tipoIdioma]);
 
+    const { imagenRef } = useContext(AppContext)
+
     return(
         <>
-            
+            {/* Unsere_Philosophie */}
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img 
                 // src={optimizedImageURL("v1719875145/mb6tugqd7dsmaxnjpu37.jpg")} 
-                src={optimizedImageURL("v1719875769/xqh0ss1f1tgxoujwu1cv.jpg")}
+                src={imagenRef?.current.Unsere_Philosophie}
                 alt="Unsere Philosophie" 
                 className="absolute top-0 left-0 w-full h-full object-cover z-0" 
                 />

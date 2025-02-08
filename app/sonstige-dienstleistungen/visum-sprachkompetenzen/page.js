@@ -6,11 +6,15 @@ import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
 
-const images = ["v1720648648/yazfttcufijofwthhes8.jpg", "v1720652893/zwpk88oskknftyafqm5u.jpg"];
+// const images = ["v1720648648/yazfttcufijofwthhes8.jpg", "v1720652893/zwpk88oskknftyafqm5u.jpg"];
 
 const VisumSprache = () => {
     const navigate = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const { imagenRef } = useContext(AppContext)
+
+    const images = [imagenRef.Visum, imagenRef.Sprachkompetenzen];
 
     useEffect(() => {
         window.scrollTo(0, 0);

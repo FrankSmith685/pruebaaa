@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import { useAppState } from "../../hooks/useAppState";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 const InternationalesKarrieremanagement=()=>{
     const navigate = useRouter();
@@ -39,12 +40,14 @@ const InternationalesKarrieremanagement=()=>{
     const handleClickEnviarCorreo=(item)=>{
         navigate.push(item);
     }
-    
+    const { imagenRef } = useContext(AppContext)
+
     return(
         <>
+        {/*  */}
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img 
-                src={optimizedImageURL("v1720047156/m0ztlmbrykc8c3x0vqjb.jpg")} 
+               src={imagenRef?.current.Internationales_Karrieremanagement}
                 alt="Internationales Karrieremanagement " 
                 className="absolute top-0 left-0 w-full h-full object-cover z-0" 
                 />
