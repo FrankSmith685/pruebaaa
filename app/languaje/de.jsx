@@ -80,6 +80,7 @@ const de = {
         Informationen:{title:"Impressum",links:[
             {link:"/benutzerrechte",detail:"Benutzerrechte"},
             {link:"/datenschutzrichtlinie",detail:"Datenschutzrichtlinie"},
+            {link:"/agb",detail:"AGB"},
         ]},
         MeineDienstleistungen:{title:"Sonstige Dienstleistungen ",links:[
             {link:"/sonstige-dienstleistungen/studium-ausbildung-praktikum",detail:"Studium - Ausbildung - Praktikum"},

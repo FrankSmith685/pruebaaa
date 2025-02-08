@@ -68,11 +68,11 @@ const Footer = () => {
                         <ul className={`${activeInformationen ? '' :'hidden'} px-2 md:block py-2`}>
                             {homeData.Informationen.links.map((link)=>{
                                 return (
-                                    <li className="mb-2"><Link href={link.link} className="font-normal">{link.detail}</Link></li>
+                                    <>
+                                        <li className="mb-2"><Link href={link.link} className="font-normal">{link.detail}</Link></li>
+                                    </>
                                 )
                             })}
-                            {/* <li className="mb-2"><Link to="/benutzerrechte" className="font-normal">Benutzerrechte</Link></li>
-                            <li className="mb-2"><Link to="/datenschutzrichtlinie" className="font-normal">Datenschutzrichtlinie</Link></li> */}
                         </ul>
                     </div>
 

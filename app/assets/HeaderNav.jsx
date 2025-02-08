@@ -51,7 +51,8 @@ const HeaderNav = () => {
                 '/derechos-del-usuario',
                 '/politica-de-privacidad',
                 '/user-rights',
-                '/privacy-policy'
+                '/privacy-policy',
+                '/agb'
             ];
             
             const locationMatches = pathsToCheck.includes(pathname);
@@ -101,7 +102,8 @@ const HeaderNav = () => {
             '/derechos-del-usuario',
             '/politica-de-privacidad',
             '/user-rights',
-            '/privacy-policy'
+            '/privacy-policy',
+            '/agb'
         ];
         
         const locationMatches = pathsToCheck.includes(pathname);

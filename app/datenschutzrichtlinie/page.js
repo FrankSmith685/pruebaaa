@@ -51,13 +51,6 @@ const PrivacyPolicy = () => {
                     <li>{data.infos2.info2}</li>
                 </ul>
             </div>
-
-            {/* <div className="bg-gray-100 p-6 rounded-md shadow-inner">
-                <h2 className="text-2xl font-semibold mb-4 text-blue-700">{data.infos3.title}</h2>
-                <p className="text-lg leading-relaxed">
-                    {data.infos2.description1}
-                </p>
-            </div> */}
         </div>
     );
 };
