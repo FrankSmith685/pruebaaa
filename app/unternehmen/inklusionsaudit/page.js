@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import MeineDienstleistungen from "@/app/assets/MeineDienstleistungen";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 const Inklusionsaudit=()=>{
     const navigate = useRouter();
@@ -41,11 +42,13 @@ const Inklusionsaudit=()=>{
         }
     },[tipoIdioma]);
 
+    const { imagenRef } = useContext(AppContext)
+
     return(
         <>
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img 
-                src={optimizedImageURL("v1720047059/wucb1mcaftn2o4kr6bva.jpg")} 
+                src={imagenRef.Inklusionsaudit} 
                 alt="Inklusionsaudit" 
                 className="absolute top-0 left-0 w-full h-full object-cover z-0" 
                 />

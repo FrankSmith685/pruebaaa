@@ -15,30 +15,40 @@ export default function PreloadWrapper({ children }) {
   const [loading, setLoading] = useState(true);
   const { imagenRef } = useContext(AppContext);
   const {videos,setVideos} = useAppState();
-    console.log("XD",imagenRef);
-    console.log("QQ","");
+  const imagePaths = {
+    LogoPrincipalWhite: "/imagenes/1.png",
+    LogoPrincipalBlack: "/imagenes/2.png",
+    Foto_Principal: "/imagenes/3.JPG",
+    Innovation: "/imagenes/4.png",
+    Recruiting: "/imagenes/5.png",
+    Vision: "/imagenes/6.png",
+    Contratacion: "/imagenes/7.png",
+    Studium: "/imagenes/8.jpg",
+    Ausbildung: "/imagenes/9.jpg",
+    Praktikum: "/imagenes/10.jpg",
+    Arbeit: "/imagenes/11.jpg",
+    Steuern: "/imagenes/12.jpg",
+    Wohen: "/imagenes/13.jpg",
+    Visum: "/imagenes/14.jpg",
+    Transportmittel: "/imagenes/13.jpg", //FALTA
+    Sprachkompetenzen: "/imagenes/16.jpg",
+    Personalauswahl_und_Rekrutierung: "/imagenes/17.jpg",
+    Personalbewertungen: "/imagenes/18.jpg",
+    International: "/imagenes/19.jpg",
+    Funktionen: "/imagenes/20.jpg",
+    Fachspezifische_Suche: "/imagenes/21.jpg",
+    Inklusionsaudit: "/imagenes/22.jpg",
+    Registrieren_Sie_Ihren_Lebenslauf: "/imagenes/23.jpg",
+    Internationales_Karrieremanagement: "/imagenes/24.jpg",
+    Wer_Wir_Sind: "/imagenes/25.png",
+    Unsere_Philosophie: "/imagenes/26.jpg",
+  };
   useEffect(() => {
     const checkResourcesLoaded = () => {
-      return (
-        // imagenRef.current?.LogoPrincipalWhite &&
-        // imagenRef.current?.LogoPrincipalBlack &&
-        // imagenRef.current?.Foto_Principal &&
-        // imagenRef.current?.Innovation &&
-        // imagenRef.current?.Recruiting &&
-        // imagenRef.current?.Vision &&
-        // imagenRef.current?.Contratacion &&
-        // imagenRef.current?.Studium &&
-        // imagenRef.current?.Ausbildung &&
-        // imagenRef.current?.Praktikum &&
-        // imagenRef.current?.Arbeit &&
-        // imagenRef.current?.Steuern &&
-        // imagenRef.current?.Wohen &&
-        // imagenRef.current?.Visum &&
-        // imagenRef.current?.Sprachkompetenzen &&
-        // imagenRef.current?.Personalauswahl_und_Rekrutierung &&
-        videos.banner?.readyState >= 3
-      );
+      const allImagesLoaded = Object.keys(imagenRef.current || {}).length === Object.keys(imagePaths).length;
+      return allImagesLoaded && videos.banner?.readyState >= 3;
     };
+    
 
     if (checkResourcesLoaded()) {
       setLoading(false);
