@@ -15,17 +15,22 @@ const ArbeitSteuern = () => {
 
     
     const { imagenRef } = useContext(AppContext);
-    const images = [imagenRef.current.Arbeit, imagenRef.current.Steuern];
-    console.log(imagenRef);
-    // const [images, setImages] = useState([]);
+    const [images, setImages] = useState([imagenRef.current.Arbeit, imagenRef.current.Steuern]);
+    const [loading, setLoading] = useState(true); 
 
-    // useEffect(() => {
-    //     if (imagenRef?.Arbeit && imagenRef?.Steuern) {
-    //         setImages([imagenRef.Arbeit, imagenRef.Steuern]);
-    //     }
-    // }, [imagenRef]); // Se actualiza cuando `imagenRef` cambia
-
-    // if (images.length === 0) return null; // Evita errores si las imágenes aún no se cargan
+        useEffect(() => {
+        const checkImage = () => {
+            if (imagenRef?.current?.Arbeit && imagenRef.current.Steuern ) {
+                setImages([imagenRef.current.Arbeit,imagenRef.current.Steuern]);
+                setLoading(false);
+            } else {
+            console.log("Imagen aún no está disponible.");
+            }
+        };
+        const interval = setInterval(checkImage, 500);
+    
+        return () => clearInterval(interval);
+        }, [imagenRef]);
 
 
     useEffect(() => {
@@ -68,11 +73,19 @@ const ArbeitSteuern = () => {
     return (
         <>
             <div className="w-full h-screen bg-bg_favorite_1 relative">
-                <img
+                {loading && (
+                    <div className="flex items-center justify-center w-full h-full">
+                    <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+                    </div>
+                )}
+                {!loading && (
+                    <img
                     src={images[currentImageIndex]}
-                    alt="NOT FOUND"
+                    alt="Imagen cargada"
                     className="absolute top-0 left-0 w-full h-full object-cover z-0"
-                />
+                    loading="lazy"
+                    />
+                )}
                 
                 <div className="bg-bg_favorite_1 flex flex-col justify-center items-center md:items-end h-full z-20 relative space-y-4 p-4 pt-32 sm:pt-48 md:pt-64 sm:p-6 md:p-8">
                     <div className="w-full md:w-3/5 h-auto">

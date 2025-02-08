@@ -1,10 +1,11 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppState } from "../../hooks/useAppState";
 import de from "../../languaje/de";
 import es from "../../languaje/es";
 import en from "../../languaje/en";
 import { useRouter } from "next/navigation";
+import { AppContext } from "@/app/context/AppContext";
 
 // const images = ["v1720648648/yazfttcufijofwthhes8.jpg", "v1720652893/zwpk88oskknftyafqm5u.jpg"];
 
@@ -14,7 +15,23 @@ const VisumSprache = () => {
 
     const { imagenRef } = useContext(AppContext)
 
-    const images = [imagenRef.current.Visum, imagenRef.current.Sprachkompetenzen];
+
+    const [images, setImages] = useState([imagenRef.current.Visum, imagenRef.current.Sprachkompetenzen]);
+    const [loading, setLoading] = useState(true); 
+
+        useEffect(() => {
+        const checkImage = () => {
+            if (imagenRef?.current?.Visum && imagenRef.current.Sprachkompetenzen) {
+                setImages([imagenRef.current.Visum,imagenRef.current.Sprachkompetenzen]);
+                setLoading(false);
+            } else {
+            console.log("Imagen aún no está disponible.");
+            }
+        };
+        const interval = setInterval(checkImage, 500);
+    
+        return () => clearInterval(interval);
+        }, [imagenRef]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,11 +55,6 @@ const VisumSprache = () => {
         setCurrentImageIndex(index);
     };
 
-    const optimizedImageURL = (url) => {
-        const cloudinaryBaseURL = 'https://res.cloudinary.com/dievolijo/image/upload/';
-        return `${cloudinaryBaseURL}c_scale,w_2000/${url}`;
-    };
-
     const [data,setData] = useState(de.MeineDienstleistungen);
     const {tipoIdioma} = useAppState();
 
@@ -59,11 +71,19 @@ const VisumSprache = () => {
     return (
         <>
             <div className="w-full h-screen bg-bg_favorite_1 relative">
-                <img
+                {loading && (
+                    <div className="flex items-center justify-center w-full h-full">
+                    <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+                    </div>
+                )}
+                {!loading && (
+                    <img
                     src={images[currentImageIndex]}
-                    alt="NOT FOUND"
+                    alt="Imagen cargada"
                     className="absolute top-0 left-0 w-full h-full object-cover z-0"
-                />
+                    loading="lazy"
+                    />
+                )}
                 
                 <div className="bg-bg_favorite_1 flex flex-col justify-center items-center md:items-end h-full z-20 relative space-y-4 p-4 pt-32 sm:pt-48 md:pt-64 sm:p-6 md:p-8">
                     <div className="w-full md:w-3/5 h-auto">

@@ -110,16 +110,37 @@ const RegistrierenSieIhrenLebenslauf = () => {
 
 
   const { imagenRef } = useContext(AppContext)
+  const [imageSrc, setImageSrc] = useState("");
+
+    useEffect(() => {
+      const checkImage = () => {
+        if (imagenRef?.current?.Registrieren_Sie_Ihren_Lebenslauf) {
+          setImageSrc(imagenRef.current.Registrieren_Sie_Ihren_Lebenslauf);
+        } else {
+          console.log("Imagen aún no está disponible.");
+        }
+      };
+      const interval = setInterval(checkImage, 500);
+  
+      return () => clearInterval(interval);
+    }, [imagenRef]);
 
   return (
     <>
       <div className="w-full h-screen bg-bg_favorite_1 relative">
-        <img
-          src={imagenRef?.current.Registrieren_Sie_Ihren_Lebenslauf}
-          alt="Registrieren Sie Ihren Lebenslauf"
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          loading="lazy"
-        />
+      {!imageSrc && (
+                    <div className="flex items-center justify-center w-full h-full">
+                    <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+                    </div>
+                )}
+                {imageSrc && (
+                    <img
+                    src={imageSrc}
+                    alt="Imagen cargada"
+                    className="absolute top-0 left-0 w-full h-full object-cover z-0"
+                    loading="lazy"
+                    />
+                )}
         <div className="bg-bg_favorite_1 flex flex-col justify-center items-center md:items-end h-full z-20 relative space-y-4 p-4 pt-32 sm:pt-48 md:pt-64 sm:p-6 md:p-8">
           <div className="w-full md:w-1/2 h-auto">
             <h2 className="text-white font-bold text-2xl sm:text-4xl  md:text-5xl font-bell text-center md:text-end px-2">
