@@ -62,7 +62,7 @@ const StudiumAusbildungPraktikum = () => {
         <>
             <div className="w-full h-screen bg-bg_favorite_1 relative">
                 <img
-                    src={optimizedImageURL(images[currentImageIndex])}
+                    src={images[currentImageIndex]}
                     alt="NOT FOUND"
                     className="absolute top-0 left-0 w-full h-full object-cover z-0"
                     loading="lazy"
