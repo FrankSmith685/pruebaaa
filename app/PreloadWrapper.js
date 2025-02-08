@@ -125,7 +125,7 @@ export default function PreloadWrapper({ children }) {
 
       return () => clearInterval(interval);
     }
-  }, []);
+  }, [imagenRef]);
 
   if (loading) {
     return (
