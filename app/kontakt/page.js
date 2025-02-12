@@ -165,8 +165,8 @@ const [imageSrc, setImageSrc] = useState("");
 
 useEffect(() => {
   const checkImage = () => {
-    if (imagenRef?.current?.Inklusionsaudit) {
-      setImageSrc(imagenRef.current.Inklusionsaudit);
+    if (imagenRef?.current?.Kontakt) {
+      setImageSrc(imagenRef.current.Kontakt);
     } else {
       console.log("Imagen aún no está disponible.");
     }

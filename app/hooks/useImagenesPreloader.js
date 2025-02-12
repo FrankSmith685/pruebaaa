@@ -90,7 +90,7 @@ export default function InitImages() {
       Steuern: "/imagenes/12.webp",
       Wohen: "/imagenes/13.webp",
       Visum: "/imagenes/14.webp",
-      Transportmittel: "/imagenes/13.webp", //FALTA
+      Transportmittel: "/imagenes/15.webp", //FALTA
       Sprachkompetenzen: "/imagenes/16.webp",
       Personalauswahl_und_Rekrutierung: "/imagenes/17.webp",
       Personalbewertungen: "/imagenes/18.webp",
@@ -102,6 +102,8 @@ export default function InitImages() {
       Internationales_Karrieremanagement: "/imagenes/24.webp",
       Wer_Wir_Sind: "/imagenes/25.webp",
       Unsere_Philosophie: "/imagenes/26.webp",
+      Kontakt: "/imagenes/27.webp",
+      // 
     };
     const loadImages = async () => {
       const promises = Object.entries(imagePaths).map(async ([key, path]) => {
